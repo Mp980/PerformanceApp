@@ -1,0 +1,158 @@
+#: import Factory kivy.factory.Factory
+
+<GTracking>:
+
+    AnchorLayout:
+        anchor_x: "center"
+        anchor_y: "bottom"
+
+        BoxLayout:
+            orientation: 'horizontal'
+            Button:
+                text: "Record"
+                color: "black"
+                font_size: 16
+                size_hint: 0.1,0.1
+                pos_hint: {'right':1}
+                on_release: root.Navigation("record")
+
+            Button:
+                id:"progress"
+                text: "Progress"
+                color: "black"
+                font_size: 16
+                size_hint: 0.1,0.1
+                pos_hint: {'left':1}
+                on_release: root.Navigation("progress")
+
+
+            Button:
+                text: "Plan"
+                color: "black"
+                font_size: 16
+                size_hint: 0.1,0.1
+                pos_hint: {'right':1}
+                on_release: root.Navigation("plan")
+
+
+<IncorrectDataTypePopup@Popup>:
+    title: "Missing info"
+    size_hint: 0.8,0.5
+    pos_hint: {"x":0.1, "top": 0.9}
+    FloatLayout:
+        Label:
+            text: "Please enter a number for entered weight and reps"
+            color:"red"
+            size_hint: 0.6,0.2
+            pos_hint: {"x": 0.2, "top":1}
+        Button:
+            text:"Ok"
+            font_size: 24
+            on_release: root.dismiss()
+            size_hint: 0.4,0.15
+            pos_hint: {"x":0.3, "y":0.1}
+
+<MissingValuesSetPopup@Popup>:
+    title: "Missing info"
+    size_hint: 0.8,0.5
+    pos_hint: {"x":0.1, "top": 0.9}
+    FloatLayout:
+        Label:
+            text: "Please enter all information for set"
+            color:"red"
+            size_hint: 0.6,0.2
+            pos_hint: {"x": 0.2, "top":1}
+        Button:
+            text:"Ok"
+            font_size: 24
+            on_release: root.dismiss()
+            size_hint: 0.4,0.15
+            pos_hint: {"x":0.3, "y":0.1}
+
+<MissingValuesDatePopup@Popup>:
+    title: "Missing info"
+    size_hint: 0.8,0.5
+    pos_hint: {"x":0.1, "top": 0.9}
+    FloatLayout:
+        Label:
+            text: "Please enter the date of workout"
+            color:"red"
+            size_hint: 0.6,0.2
+            pos_hint: {"x": 0.2, "top":1}
+        Button:
+            text:"Ok"
+            font_size: 24
+            on_release: root.dismiss()
+            size_hint: 0.4,0.15
+            pos_hint: {"x":0.3, "y":0.1}
+
+<MissingValuesMuscleGroupPopup@Popup>:
+    title: "Missing info"
+    size_hint: 0.8,0.5
+    pos_hint: {"x":0.1, "top": 0.9}
+    FloatLayout:
+        Label:
+            text: "Please enter information for muscle group"
+            color:"red"
+            size_hint: 0.6,0.2
+            pos_hint: {"x": 0.2, "top":1}
+        Button:
+            text:"Ok"
+            font_size: 24
+            on_release: root.dismiss()
+            size_hint: 0.4,0.15
+            pos_hint: {"x":0.3, "y":0.1}
+
+<MissingValuesExercisePopup@Popup>:
+    title: "Missing info"
+    size_hint: 0.8,0.5
+    pos_hint: {"x":0.1, "top": 0.9}
+    FloatLayout:
+        Label:
+            text: "Please enter exercise"
+            color:"red"
+            size_hint: 0.6,0.2
+            pos_hint: {"x": 0.2, "top":1}
+        Button:
+            text:"Ok"
+            font_size: 24
+            on_release: root.dismiss()
+            size_hint: 0.4,0.15
+            pos_hint: {"x":0.3, "y":0.1}
+
+<PopupContent@Popup>:
+    auto_dismiss: False
+    size_hint: (None,None)
+    width: 350
+    height: 400
+
+    FloatLayout:
+        Label:
+            text: "Are you sure you want ot delete this note?"
+            size_hint: 0.6,0.2
+            pos_hint: {"x": 0.2, "top":1}
+
+        Label:
+            text: "Note cannot be recovered once deleted"
+            size_hint: 0.6,0.2
+            pos_hint: {"x": 0.2, "top":0.75}
+
+        Button:
+            text: "Yes"
+            size_hint: 0.4,0.2
+            pos_hint: {"x":0.1, "y":0.1}
+            on_press:
+                Factory.Plan.delete(Factory.Plan)
+                root.dismiss()
+
+        Button
+            text: "No"
+            size_hint: 0.4,0.2
+            pos_hint: {"x": 0.5, "y":0.1}
+            on_press:
+                root.dismiss()
+
+
+
+
+
